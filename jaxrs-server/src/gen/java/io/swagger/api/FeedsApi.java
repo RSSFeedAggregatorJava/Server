@@ -1,22 +1,13 @@
 package io.swagger.api;
 
-import io.swagger.model.*;
 import io.swagger.api.FeedsApiService;
 import io.swagger.api.factories.FeedsApiServiceFactory;
 
 import io.swagger.annotations.ApiParam;
-import io.swagger.jaxrs.*;
-
 import io.swagger.model.Feed;
 import java.math.BigDecimal;
 
-import java.util.List;
 import io.swagger.api.NotFoundException;
-
-import java.io.InputStream;
-
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
-import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
@@ -28,7 +19,7 @@ import javax.ws.rs.*;
 
 @io.swagger.annotations.Api(description = "the feeds API")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-01-10T14:57:08.577Z")
-public class FeedsApi  {
+public class FeedsApi {
    private final FeedsApiService delegate = FeedsApiServiceFactory.getFeedsApi();
 
     @DELETE

@@ -1,21 +1,12 @@
 package io.swagger.api;
 
-import io.swagger.model.*;
 import io.swagger.api.ArticlesApiService;
 import io.swagger.api.factories.ArticlesApiServiceFactory;
 
 import io.swagger.annotations.ApiParam;
-import io.swagger.jaxrs.*;
-
 import io.swagger.model.Article;
 
-import java.util.List;
 import io.swagger.api.NotFoundException;
-
-import java.io.InputStream;
-
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
-import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
