@@ -14,9 +14,10 @@
 package io.swagger.model;
 
 import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 
 /**
  * InlineResponse200
@@ -27,7 +28,7 @@ public class InlineResponse200   {
   private String apiKey = null;
 
   @JsonProperty("userId")
-  private BigDecimal userId = null;
+  private Integer userId = null;
 
   public InlineResponse200 apiKey(String apiKey) {
     this.apiKey = apiKey;
@@ -48,7 +49,7 @@ public class InlineResponse200   {
     this.apiKey = apiKey;
   }
 
-  public InlineResponse200 userId(BigDecimal userId) {
+  public InlineResponse200 userId(Integer userId) {
     this.userId = userId;
     return this;
   }
@@ -59,12 +60,12 @@ public class InlineResponse200   {
   **/
   @JsonProperty("userId")
   @ApiModelProperty(value = "userId for querying related items (feeds...)")
-  public BigDecimal getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
-  public void setUserId(BigDecimal userId) {
-    this.userId = userId;
+  public void setUserId(Integer integer) {
+    this.userId = integer;
   }
 
 

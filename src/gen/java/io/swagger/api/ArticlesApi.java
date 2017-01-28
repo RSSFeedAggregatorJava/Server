@@ -33,11 +33,11 @@ public class ArticlesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "successful operation", response = Article.class),
         
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid Order", response = Article.class) })
-    public Response articlesFeedIdArticleIdGet(@ApiParam(value = "ID of feed containing article",required=true) @PathParam("feedId") String feedId
-,@ApiParam(value = "ID of article to retrieve",required=true) @PathParam("articleId") String articleId
-,@Context SecurityContext securityContext)
+    public Response articlesFeedIdArticleIdGet(@ApiParam(value = "feedId",required=true) @PathParam("feedId") String feedId
+,@ApiParam(value = "articleId",required=true) String articleId
+,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
     throws NotFoundException {
-        return delegate.articlesFeedIdArticleIdGet(feedId,articleId,securityContext);
+        return delegate.articlesFeedIdArticleIdGet(feedId,articleId,securityContext, apiKey);
     }
     @GET
     @Path("/{feedId}")
@@ -50,9 +50,9 @@ public class ArticlesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "list of articles in the feed", response = InlineResponse2002.class, responseContainer = "List"),
         
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid Order", response = InlineResponse2002.class, responseContainer = "List") })
-    public Response articlesFeedIdGet(@ApiParam(value = "ID of feed containing article",required=true) @PathParam("feedId") String feedId
-,@Context SecurityContext securityContext)
+    public Response articlesFeedIdGet(@ApiParam(value = "feedId",required=true) String feedId
+,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
     throws NotFoundException {
-        return delegate.articlesFeedIdGet(feedId,securityContext);
+        return delegate.articlesFeedIdGet(feedId,securityContext, apiKey);
     }
 }

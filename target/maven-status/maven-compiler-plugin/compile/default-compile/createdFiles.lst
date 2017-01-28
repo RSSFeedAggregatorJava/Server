@@ -1,17 +1,23 @@
 io\swagger\model\InlineResponse2001.class
+controller\UsersController.class
 io\swagger\api\FeedsApiService.class
+dao\FeedsDAO.class
+controller\ArticlesController.class
+utils\BCrypt.class
 io\swagger\api\ApiResponseMessage.class
 io\swagger\model\InlineResponse200.class
 io\swagger\model\Credentials.class
-io\swagger\model\Credentials1.class
 io\swagger\api\ArticlesApiService.class
 io\swagger\api\impl\FeedsApiServiceImpl.class
 io\swagger\api\StringUtil.class
 io\swagger\model\Article.class
 io\swagger\api\FeedsApi.class
 io\swagger\model\InlineResponse2002.class
+utils\DBConnect.class
+utils\RSSParser.class
 io\swagger\api\ApiOriginFilter.class
 io\swagger\api\UsersApi.class
+controller\FeedsController.class
 io\swagger\api\UsersApiService.class
 io\swagger\api\impl\UsersApiServiceImpl.class
 io\swagger\api\Bootstrap.class
@@ -20,6 +26,7 @@ io\swagger\api\JacksonJsonProvider.class
 io\swagger\model\User.class
 io\swagger\api\factories\UsersApiServiceFactory.class
 io\swagger\api\NotFoundException.class
+dao\UsersDAO.class
 io\swagger\api\RFC3339DateFormat.class
 io\swagger\model\ArticleEnclosure.class
 io\swagger\api\impl\ArticlesApiServiceImpl.class
@@ -27,3 +34,4 @@ io\swagger\model\Feed.class
 io\swagger\api\ApiException.class
 io\swagger\api\ArticlesApi.class
 io\swagger\api\factories\ArticlesApiServiceFactory.class
+utils\TokenGenerator.class

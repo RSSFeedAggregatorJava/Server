@@ -1,19 +1,27 @@
 package io.swagger.api;
 
-import io.swagger.api.FeedsApiService;
-import io.swagger.api.factories.FeedsApiServiceFactory;
-
-import io.swagger.annotations.ApiParam;
+import java.io.IOException;
 import java.math.BigDecimal;
-import io.swagger.model.Feed;
-import io.swagger.model.InlineResponse2001;
+import java.sql.SQLException;
 
-import io.swagger.api.NotFoundException;
-
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
-import javax.ws.rs.*;
+
+import com.sun.syndication.io.FeedException;
+
+import io.swagger.annotations.ApiParam;
+import io.swagger.api.factories.FeedsApiServiceFactory;
+import io.swagger.model.Feed;
+import io.swagger.model.InlineResponse2001;
 
 @Path("/feeds")
 
@@ -32,10 +40,10 @@ public class FeedsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "successful unsubscribed", response = void.class),
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "feed doesn't exist", response = void.class) })
-    public Response feedsDelete(@ApiParam(value = "ID of feed that user want to unsubscribe",required=true) @QueryParam("feedId") Integer feedId
-,@Context SecurityContext securityContext)
-    throws NotFoundException {
-        return delegate.feedsDelete(feedId,securityContext);
+    public Response feedsDelete(@ApiParam(value = "feedId",required=true) Integer feedId
+,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
+    throws NotFoundException, SQLException {
+        return delegate.feedsDelete(feedId,securityContext,apiKey);
     }
     @GET
     @Path("/{feedId}")
@@ -50,10 +58,10 @@ public class FeedsApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ID supplied", response = Feed.class),
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "feed not found", response = Feed.class) })
-    public Response feedsFeedIdGet(@ApiParam(value = "ID of feed that needs to be fetched",required=true) @PathParam("feedId") Long feedId
-,@Context SecurityContext securityContext)
-    throws NotFoundException {
-        return delegate.feedsFeedIdGet(feedId,securityContext);
+    public Response feedsFeedIdGet(@ApiParam(value = "feedId",required=true) @PathParam("feedId") Long feedId
+,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
+    throws NotFoundException, SQLException {
+        return delegate.feedsFeedIdGet(feedId,securityContext,apiKey);
     }
     @GET
     
@@ -66,9 +74,9 @@ public class FeedsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "the lisT of feedS subscribed by user", response = InlineResponse2001.class, responseContainer = "List"),
         
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid tag value", response = InlineResponse2001.class, responseContainer = "List") })
-    public Response feedsGet(@Context SecurityContext securityContext)
-    throws NotFoundException {
-        return delegate.feedsGet(securityContext);
+    public Response feedsGet(@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
+    throws NotFoundException, IllegalArgumentException, SQLException, FeedException, IOException {
+        return delegate.feedsGet(securityContext,apiKey);
     }
     @POST
     
@@ -81,9 +89,10 @@ public class FeedsApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "url doesn't correspond to valid rss file", response = BigDecimal.class),
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "url inaccessible", response = BigDecimal.class) })
-    public Response feedsPost(@ApiParam(value = "url of feed that user want to subscribe",required=true) @QueryParam("feedUrl") String feedUrl
-,@Context SecurityContext securityContext)
-    throws NotFoundException {
-        return delegate.feedsPost(feedUrl,securityContext);
+    public Response feedsPost(@ApiParam(value = "feedUrl",required=true) String feedUrl
+,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
+		throws IllegalArgumentException, SQLException, FeedException, IOException
+     {
+        return delegate.feedsPost(feedUrl,securityContext,apiKey);
     }
 }

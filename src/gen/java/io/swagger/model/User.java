@@ -14,122 +14,101 @@
 package io.swagger.model;
 
 import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * User
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-01-26T20:43:45.780Z")
 public class User   {
-  @JsonProperty("id")
-  private Integer id = null;
+	private Integer userId = null;
 
-  @JsonProperty("email")
-  private String email = null;
+	@JsonProperty("email")
+	private String email = null;
 
-  @JsonProperty("password")
-  private String password = null;
+	@JsonProperty("password")
+	private String password = null;
 
-  public User id(Integer id) {
-    this.id = id;
-    return this;
-  }
+	private String apiKey = null;
 
-   /**
-   * Get id
-   * @return id
-  **/
-  @JsonProperty("id")
-  @ApiModelProperty(value = "")
-  public Integer getId() {
-    return id;
-  }
+	public User userId(Integer userId) {
+		this.userId = userId;
+		return this;
+	}
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	public Integer getUserId() {
+		return userId;
+	}
 
-  public User email(String email) {
-    this.email = email;
-    return this;
-  }
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
-   /**
-   * Get email
-   * @return email
-  **/
-  @JsonProperty("email")
-  @ApiModelProperty(required = true, value = "")
-  public String getEmail() {
-    return email;
-  }
+	public String getEmail() {
+		return email;
+	}
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-  public User password(String password) {
-    this.password = password;
-    return this;
-  }
+	public String getPassword() {
+		return password;
+	}
 
-   /**
-   * Get password
-   * @return password
-  **/
-  @JsonProperty("password")
-  @ApiModelProperty(required = true, value = "")
-  public String getPassword() {
-    return password;
-  }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+	public String getApiKey() {
+		return apiKey;
+	}
 
+	public void setApiKey(String apiKey) {
+		this.apiKey = apiKey;
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    User user = (User) o;
-    return Objects.equals(this.id, user.id) &&
-        Objects.equals(this.email, user.email) &&
-        Objects.equals(this.password, user.password);
-  }
+	@Override
+	public boolean equals(java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		User user = (User) o;
+		return Objects.equals(this.userId, user.userId) &&
+				Objects.equals(this.email, user.email) &&
+				Objects.equals(this.password, user.password);
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, email, password);
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(userId, email, password);
+	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class User {\n");
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class User {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		sb.append("    id: ").append(toIndentedString(userId)).append("\n");
+		sb.append("    email: ").append(toIndentedString(email)).append("\n");
+		sb.append("    password: ").append(toIndentedString(password)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }
 
