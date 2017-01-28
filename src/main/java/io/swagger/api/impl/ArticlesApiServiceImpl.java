@@ -3,8 +3,13 @@ package io.swagger.api.impl;
 import io.swagger.api.*;
 import io.swagger.api.NotFoundException;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+
+import com.sun.syndication.io.FeedException;
 
 import controller.ArticlesController;
 
@@ -16,7 +21,7 @@ public class ArticlesApiServiceImpl extends ArticlesApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response articlesFeedIdGet(String feedId, SecurityContext securityContext, String apiKey) throws NotFoundException {
+    public Response articlesFeedIdGet(String feedId, SecurityContext securityContext, String apiKey) throws NotFoundException, IllegalArgumentException, SQLException, FeedException, IOException {
     	ArticlesController.getArticles(feedId, apiKey);
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

@@ -24,7 +24,7 @@ public class DBConnect implements ServletContextListener{
 	public void contextInitialized(ServletContextEvent arg0) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			DBConnect.conn = DriverManager.getConnection("jdbc:mysql://mysql:3306/rssfeedagregator", "root", "C5C4ng2ohfry03gG ");
+			DBConnect.conn = DriverManager.getConnection("jdbc:mysql://mysql:3306/rssfeedagregator", "root", "C5C4ng2ohfry03gG");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

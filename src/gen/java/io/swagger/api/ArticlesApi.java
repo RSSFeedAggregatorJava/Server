@@ -12,6 +12,12 @@ import io.swagger.api.NotFoundException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+
+import com.sun.syndication.io.FeedException;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.ws.rs.*;
 
 @Path("/articles")
@@ -52,7 +58,7 @@ public class ArticlesApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid Order", response = InlineResponse2002.class, responseContainer = "List") })
     public Response articlesFeedIdGet(@ApiParam(value = "feedId",required=true) String feedId
 ,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
-    throws NotFoundException {
+    throws NotFoundException, IllegalArgumentException, SQLException, FeedException, IOException {
         return delegate.articlesFeedIdGet(feedId,securityContext, apiKey);
     }
 }
