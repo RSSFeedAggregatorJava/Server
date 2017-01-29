@@ -46,7 +46,7 @@ public class UsersApi  {
 	@io.swagger.annotations.ApiOperation(value = "Logs out current logged in user session", notes = "", response = void.class, tags={ "user", })
 	@io.swagger.annotations.ApiResponses(value = { 
 			@io.swagger.annotations.ApiResponse(code = 200, message = "successful operation", response = void.class) })
-	public Response usersLogoutGet(@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
+	public Response usersLogoutGet(@Context SecurityContext securityContext,@HeaderParam("api_key") String apiKey)
 			throws NotFoundException, SQLException {
 		return delegate.usersLogoutGet(securityContext,apiKey);
 	}

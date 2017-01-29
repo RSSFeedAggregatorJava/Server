@@ -30,7 +30,7 @@ public class User   {
 	@JsonProperty("password")
 	private String password = null;
 
-	private String apiKey = null;
+	private String api_key = null;
 
 	public User userId(Integer userId) {
 		this.userId = userId;
@@ -61,12 +61,12 @@ public class User   {
 		this.password = password;
 	}
 
-	public String getApiKey() {
-		return apiKey;
+	public String getApi_key() {
+		return api_key;
 	}
 
-	public void setApiKey(String apiKey) {
-		this.apiKey = apiKey;
+	public void setApi_key(String api_key) {
+		this.api_key = api_key;
 	}
 
 	@Override

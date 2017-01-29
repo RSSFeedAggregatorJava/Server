@@ -38,7 +38,7 @@ public class UsersDAO {
 		User user = new User();
 		rs.next();
 		user.setUserId(rs.getInt("id"));
-		user.setApiKey(rs.getString("token"));
+		user.setApi_key(rs.getString("token"));
 		user.setEmail(rs.getString("email"));
 		user.setPassword(rs.getString("password"));
 		//TODO: Gestion erreur
@@ -55,7 +55,7 @@ public class UsersDAO {
 		User user = new User();
 		rs.next();
 		user.setUserId(rs.getInt("id"));
-		user.setApiKey(rs.getString("token"));
+		user.setApi_key(rs.getString("token"));
 		user.setEmail(rs.getString("email"));
 		user.setPassword(rs.getString("password"));
 		//TODO: Gestion erreur

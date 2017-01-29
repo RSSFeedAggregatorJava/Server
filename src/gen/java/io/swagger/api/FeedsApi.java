@@ -41,7 +41,7 @@ public class FeedsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "feed doesn't exist", response = void.class) })
     public Response feedsDelete(@ApiParam(value = "feedId",required=true) Integer feedId
-,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
+,@Context SecurityContext securityContext,@HeaderParam("api_key") String apiKey)
     throws NotFoundException, SQLException {
         return delegate.feedsDelete(feedId,securityContext,apiKey);
     }
@@ -59,7 +59,7 @@ public class FeedsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "feed not found", response = Feed.class) })
     public Response feedsFeedIdGet(@ApiParam(value = "feedId",required=true) @PathParam("feedId") Long feedId
-,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
+,@Context SecurityContext securityContext,@HeaderParam("api_key") String apiKey)
     throws NotFoundException, SQLException {
         return delegate.feedsFeedIdGet(feedId,securityContext,apiKey);
     }
