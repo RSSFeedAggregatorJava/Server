@@ -1,24 +1,23 @@
 package io.swagger.api;
 
-import io.swagger.api.ArticlesApiService;
-import io.swagger.api.factories.ArticlesApiServiceFactory;
+import java.io.IOException;
+import java.sql.SQLException;
 
-import io.swagger.annotations.ApiParam;
-import io.swagger.model.Article;
-import io.swagger.model.InlineResponse2002;
-
-import io.swagger.api.NotFoundException;
-
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 import com.sun.syndication.io.FeedException;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
-import javax.ws.rs.*;
+import io.swagger.annotations.ApiParam;
+import io.swagger.api.factories.ArticlesApiServiceFactory;
+import io.swagger.model.Article;
+import io.swagger.model.InlineResponse2001;
 
 @Path("/articles")
 
@@ -40,23 +39,23 @@ public class ArticlesApi  {
         
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid Order", response = Article.class) })
     public Response articlesFeedIdArticleIdGet(@ApiParam(value = "feedId",required=true) @PathParam("feedId") String feedId
-,@ApiParam(value = "articleId",required=true) String articleId
+,@ApiParam(value = "articleId",required=true) @PathParam("articleId") String articleId
 ,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
-    throws NotFoundException {
+    throws NotFoundException, IllegalArgumentException, SQLException, FeedException, IOException {
         return delegate.articlesFeedIdArticleIdGet(feedId,articleId,securityContext, apiKey);
     }
     @GET
     @Path("/{feedId}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "retrieve the lisT of articles in the feed", notes = "", response = InlineResponse2002.class, responseContainer = "List", authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "retrieve the lisT of articles in the feed", notes = "", response = InlineResponse2001.class, responseContainer = "List", authorizations = {
         @io.swagger.annotations.Authorization(value = "api_key")
     }, tags={ "article", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "list of articles in the feed", response = InlineResponse2002.class, responseContainer = "List"),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "list of articles in the feed", response = InlineResponse2001.class, responseContainer = "List"),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid Order", response = InlineResponse2002.class, responseContainer = "List") })
-    public Response articlesFeedIdGet(@ApiParam(value = "feedId",required=true) String feedId
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid Order", response = InlineResponse2001.class, responseContainer = "List") })
+    public Response articlesFeedIdGet(@ApiParam(value = "feedId",required=true) @PathParam("feedId") String feedId
 ,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
     throws NotFoundException, IllegalArgumentException, SQLException, FeedException, IOException {
         return delegate.articlesFeedIdGet(feedId,securityContext, apiKey);

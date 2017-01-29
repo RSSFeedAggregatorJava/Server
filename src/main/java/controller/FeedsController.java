@@ -10,6 +10,7 @@ import com.sun.syndication.io.FeedException;
 import dao.FeedsDAO;
 import dao.UsersDAO;
 import io.swagger.model.Feed;
+import io.swagger.model.InlineResponse2001;
 import io.swagger.model.User;
 import utils.RSSParser;
 
@@ -33,14 +34,13 @@ public class FeedsController {
 		FeedsDAO.createFeed(feed);
 	}
 
-	public static List<Feed> getFeeds(String apiKey) throws SQLException, IllegalArgumentException, FeedException, IOException {
+	public static List<InlineResponse2001> getFeeds(String apiKey) throws SQLException, IllegalArgumentException, FeedException, IOException {
 		User user = UsersDAO.readUserByApiKey(apiKey);
 		return FeedsDAO.readFeeds(user.getUserId());
 	}
 
 	public static void unsubscribeFeed(Integer feedId, String apiKey) throws SQLException {
 		FeedsDAO.deleteFeed(feedId);
-		
 	}
 
 	public static Feed getFeed(Long feedId, String apiKey) throws SQLException {

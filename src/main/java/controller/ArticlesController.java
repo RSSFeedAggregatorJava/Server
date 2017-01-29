@@ -13,28 +13,51 @@ import com.sun.syndication.io.FeedException;
 import dao.FeedsDAO;
 import io.swagger.model.Article;
 import io.swagger.model.Feed;
+import io.swagger.model.InlineResponse2001;
 import utils.RSSParser;
 
 public class ArticlesController {
-	
-	public static List<Article> getArticles(String feedId, String apiKey) throws SQLException, IllegalArgumentException, FeedException, IOException {
+
+	public static List<InlineResponse2001> getArticles(String feedId, String apiKey) throws SQLException, IllegalArgumentException, FeedException, IOException {
+		Feed feed = FeedsDAO.readFeed(Long.valueOf(feedId));
+		RSSParser parser = new RSSParser(feed.getFeedUrl());
+		SyndFeed xml = parser.getFeed();
+		List<InlineResponse2001> articles = new ArrayList<InlineResponse2001>();
+		List<?> entries = xml.getEntries();
+		Iterator<?> itEntries = entries.iterator();
+
+		int n = 0;
+		while (itEntries.hasNext()) {
+			SyndEntry entry = (SyndEntry) itEntries.next();
+			InlineResponse2001 article = new InlineResponse2001();
+			article.setTitle(entry.getTitle());
+			article.setId(n++);
+			articles.add(article);
+		}
+
+		return articles;
+	}
+
+	public static Article getArticle(String feedId, String articleId) throws SQLException, IllegalArgumentException, FeedException, IOException {
 		Feed feed = FeedsDAO.readFeed(Long.valueOf(feedId));
 		RSSParser parser = new RSSParser(feed.getFeedUrl());
 		SyndFeed xml = parser.getFeed();
 		List<Article> articles = new ArrayList<Article>();
 		List<?> entries = xml.getEntries();
 		Iterator<?> itEntries = entries.iterator();
- 
+
+		int n = 0;
 		while (itEntries.hasNext()) {
 			SyndEntry entry = (SyndEntry) itEntries.next();
-			System.out.println("Title: " + entry.getTitle());
-			System.out.println("Link: " + entry.getLink());
-			System.out.println("Author: " + entry.getAuthor());
-			System.out.println("Publish Date: " + entry.getPublishedDate());
-			System.out.println("Description: " + entry.getDescription().getValue());
+			Article article = new Article();
+			article.setTitle(entry.getTitle());
+			article.setAuthor(entry.getAuthor());
+			article.setDescription(entry.getDescription().getValue());
+			article.setLink(entry.getLink());
+			article.setId(n++);
+			articles.add(article);
 		}
 		
-		//return articles;
-		return null;
+		return articles.get(Integer.valueOf(articleId));
 	}
 }

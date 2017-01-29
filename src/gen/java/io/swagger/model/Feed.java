@@ -13,8 +13,6 @@
 
 package io.swagger.model;
 
-import java.util.Objects;
-
 /**
  * Feed
  */
@@ -172,91 +170,6 @@ public class Feed   {
 
 	public void setWebMaster(String webMaster) {
 		this.webMaster = webMaster;
-	}
-
-	@Override
-	public boolean equals(java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		Feed feed = (Feed) o;
-		return Objects.equals(this.id, feed.id) &&
-				Objects.equals(this.feedUrl, feed.feedUrl) &&
-				Objects.equals(this.category, feed.category) &&
-				Objects.equals(this.copyright, feed.copyright) &&
-				Objects.equals(this.description, feed.description) &&
-				Objects.equals(this.docs, feed.docs) &&
-				Objects.equals(this.generator, feed.generator) &&
-				Objects.equals(this.image, feed.image) &&
-				Objects.equals(this.language, feed.language) &&
-				Objects.equals(this.lastBuildDate, feed.lastBuildDate) &&
-				Objects.equals(this.link, feed.link) &&
-				Objects.equals(this.managingEditor, feed.managingEditor) &&
-				Objects.equals(this.pubDate, feed.pubDate) &&
-				Objects.equals(this.rating, feed.rating) &&
-				Objects.equals(this.title, feed.title) &&
-				Objects.equals(this.webMaster, feed.webMaster);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, feedUrl, category, copyright, description, docs, generator, image, language, lastBuildDate, link, managingEditor, pubDate, rating, title, webMaster);
-	}
-
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("{\n");
-		if (id != null)
-			sb.append("    \"id\": \"").append(toIndentedString(id)).append("\",\n");
-		if (title != null)
-			sb.append("    \"title\": \"").append(toIndentedString(title)).append("\",\n");
-		if (description != null)
-			sb.append("    \"description\": \"").append(toIndentedString(description)).append("\",\n");
-		if (feedUrl != null)
-			sb.append("    \"url\": \"").append(toIndentedString(feedUrl)).append("\",\n");
-		if (link != null)
-			sb.append("    \"link\": \"").append(toIndentedString(link)).append("\",\n");
-		if (pubDate != null)
-			sb.append("    \"pubDate\": \"").append(toIndentedString(pubDate)).append("\",\n");
-		if (image != null)
-			sb.append("    \"image\": \"").append(toIndentedString(image)).append("\",\n");
-		if (category != null)
-			sb.append("    \"category\": \"").append(toIndentedString(category)).append("\",\n");
-		if (copyright != null)
-			sb.append("    \"copyright\": \"").append(toIndentedString(copyright)).append("\",\n");
-		if (docs != null)
-			sb.append("    \"docs\": \"").append(toIndentedString(docs)).append("\",\n");
-		if (generator != null)
-			sb.append("    \"generator\": \"").append(toIndentedString(generator)).append("\",\n");
-		if (language != null)
-			sb.append("    \"language\": \"").append(toIndentedString(language)).append("\",\n");
-		if (lastBuildDate != null)
-			sb.append("    \"lastBuildDate\": \"").append(toIndentedString(lastBuildDate)).append("\",\n");
-		if (managingEditor != null)
-			sb.append("    \"managingEditor\": \"").append(toIndentedString(managingEditor)).append("\",\n");
-		if (rating != null)
-			sb.append("    \"rating\": \"").append(toIndentedString(rating)).append("\",\n");
-		if (webMaster != null)
-			sb.append("    \"webMaster\": \"").append(toIndentedString(webMaster)).append("\",\n");
-		sb.append("}");
-		sb = new StringBuilder(sb).replace(sb.lastIndexOf(","), sb.lastIndexOf(",") + 1, "");
-		return sb.toString();
-	}
-
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
 	}
 }
 

@@ -13,10 +13,6 @@
 
 package io.swagger.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-import io.swagger.model.ArticleEnclosure;
 import java.util.Date;
 
 /**
@@ -24,306 +20,87 @@ import java.util.Date;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-01-26T20:43:45.780Z")
 public class Article   {
-  @JsonProperty("id")
-  private Integer id = null;
+	private Integer id = null;
+	private String author = "";
+	private String category = "";
+	private String comments = "";
+	private String description = "";
+	private String guid = "";
+	private String link = "";
+	private String pubdate = "";
+	private String source = "";
+	private String title = "";
 
-  @JsonProperty("author")
-  private String author = null;
+	public Integer getId() {
+		return id;
+	}
 
-  @JsonProperty("category")
-  private String category = null;
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-  @JsonProperty("comments")
-  private String comments = null;
+	public String getAuthor() {
+		return author;
+	}
 
-  @JsonProperty("description")
-  private String description = null;
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 
-  @JsonProperty("enclosure")
-  private ArticleEnclosure enclosure = null;
+	public String getCategory() {
+		return category;
+	}
 
-  @JsonProperty("guid")
-  private String guid = null;
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
-  @JsonProperty("link")
-  private String link = null;
+	public String getComments() {
+		return comments;
+	}
 
-  @JsonProperty("pubdate")
-  private Date pubdate = null;
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 
-  @JsonProperty("source")
-  private String source = null;
+	public String getDescription() {
+		return description;
+	}
 
-  @JsonProperty("title")
-  private String title = null;
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public Article id(Integer id) {
-    this.id = id;
-    return this;
-  }
+	public String getGuid() {
+		return guid;
+	}
 
-   /**
-   * Get id
-   * @return id
-  **/
-  @JsonProperty("id")
-  @ApiModelProperty(required = true, value = "")
-  public Integer getId() {
-    return id;
-  }
+	public void setGuid(String guid) {
+		this.guid = guid;
+	}
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	public String getLink() {
+		return link;
+	}
 
-  public Article author(String author) {
-    this.author = author;
-    return this;
-  }
+	public void setLink(String link) {
+		this.link = link;
+	}
 
-   /**
-   * Get author
-   * @return author
-  **/
-  @JsonProperty("author")
-  @ApiModelProperty(value = "")
-  public String getAuthor() {
-    return author;
-  }
+	public String getSource() {
+		return source;
+	}
 
-  public void setAuthor(String author) {
-    this.author = author;
-  }
+	public void setSource(String source) {
+		this.source = source;
+	}
 
-  public Article category(String category) {
-    this.category = category;
-    return this;
-  }
+	public String getTitle() {
+		return title;
+	}
 
-   /**
-   * Get category
-   * @return category
-  **/
-  @JsonProperty("category")
-  @ApiModelProperty(value = "")
-  public String getCategory() {
-    return category;
-  }
-
-  public void setCategory(String category) {
-    this.category = category;
-  }
-
-  public Article comments(String comments) {
-    this.comments = comments;
-    return this;
-  }
-
-   /**
-   * Get comments
-   * @return comments
-  **/
-  @JsonProperty("comments")
-  @ApiModelProperty(value = "")
-  public String getComments() {
-    return comments;
-  }
-
-  public void setComments(String comments) {
-    this.comments = comments;
-  }
-
-  public Article description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  @JsonProperty("description")
-  @ApiModelProperty(required = true, value = "")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public Article enclosure(ArticleEnclosure enclosure) {
-    this.enclosure = enclosure;
-    return this;
-  }
-
-   /**
-   * Get enclosure
-   * @return enclosure
-  **/
-  @JsonProperty("enclosure")
-  @ApiModelProperty(value = "")
-  public ArticleEnclosure getEnclosure() {
-    return enclosure;
-  }
-
-  public void setEnclosure(ArticleEnclosure enclosure) {
-    this.enclosure = enclosure;
-  }
-
-  public Article guid(String guid) {
-    this.guid = guid;
-    return this;
-  }
-
-   /**
-   * Get guid
-   * @return guid
-  **/
-  @JsonProperty("guid")
-  @ApiModelProperty(value = "")
-  public String getGuid() {
-    return guid;
-  }
-
-  public void setGuid(String guid) {
-    this.guid = guid;
-  }
-
-  public Article link(String link) {
-    this.link = link;
-    return this;
-  }
-
-   /**
-   * Get link
-   * @return link
-  **/
-  @JsonProperty("link")
-  @ApiModelProperty(required = true, value = "")
-  public String getLink() {
-    return link;
-  }
-
-  public void setLink(String link) {
-    this.link = link;
-  }
-
-  public Article pubdate(Date pubdate) {
-    this.pubdate = pubdate;
-    return this;
-  }
-
-   /**
-   * Get pubdate
-   * @return pubdate
-  **/
-  @JsonProperty("pubdate")
-  @ApiModelProperty(value = "")
-  public Date getPubdate() {
-    return pubdate;
-  }
-
-  public void setPubdate(Date pubdate) {
-    this.pubdate = pubdate;
-  }
-
-  public Article source(String source) {
-    this.source = source;
-    return this;
-  }
-
-   /**
-   * Get source
-   * @return source
-  **/
-  @JsonProperty("source")
-  @ApiModelProperty(value = "")
-  public String getSource() {
-    return source;
-  }
-
-  public void setSource(String source) {
-    this.source = source;
-  }
-
-  public Article title(String title) {
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @JsonProperty("title")
-  @ApiModelProperty(required = true, value = "")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Article article = (Article) o;
-    return Objects.equals(this.id, article.id) &&
-        Objects.equals(this.author, article.author) &&
-        Objects.equals(this.category, article.category) &&
-        Objects.equals(this.comments, article.comments) &&
-        Objects.equals(this.description, article.description) &&
-        Objects.equals(this.enclosure, article.enclosure) &&
-        Objects.equals(this.guid, article.guid) &&
-        Objects.equals(this.link, article.link) &&
-        Objects.equals(this.pubdate, article.pubdate) &&
-        Objects.equals(this.source, article.source) &&
-        Objects.equals(this.title, article.title);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, author, category, comments, description, enclosure, guid, link, pubdate, source, title);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Article {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    author: ").append(toIndentedString(author)).append("\n");
-    sb.append("    category: ").append(toIndentedString(category)).append("\n");
-    sb.append("    comments: ").append(toIndentedString(comments)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    enclosure: ").append(toIndentedString(enclosure)).append("\n");
-    sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    pubdate: ").append(toIndentedString(pubdate)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 }
 

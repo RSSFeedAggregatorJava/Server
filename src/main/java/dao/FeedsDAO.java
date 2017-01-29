@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.swagger.model.Feed;
+import io.swagger.model.InlineResponse2001;
 import utils.DBConnect;
 
 public class FeedsDAO {
@@ -23,15 +24,15 @@ public class FeedsDAO {
 		//TODO: Gestion erreur
 	}
 
-	public static List<Feed> readFeeds(int userId) throws SQLException {
+	public static List<InlineResponse2001> readFeeds(int userId) throws SQLException {
 		PreparedStatement stt = DBConnect.conn.prepareStatement("SELECT id, title FROM feeds WHERE user_id = ?");
 		stt.setInt(1, userId);
 		ResultSet rs = stt.executeQuery();
 		if (rs.isLast())
 			return null;
-		List<Feed> feeds = new ArrayList<Feed>();
+		List<InlineResponse2001> feeds = new ArrayList<InlineResponse2001>();
 		while (rs.next()) {
-			Feed feed = new Feed();
+			InlineResponse2001 feed = new InlineResponse2001();
 			feed.setId(rs.getInt("id"));
 			feed.setTitle(rs.getString("title"));
 			feeds.add(feed);

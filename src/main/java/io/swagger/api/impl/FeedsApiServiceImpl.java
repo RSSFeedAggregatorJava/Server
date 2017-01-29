@@ -3,6 +3,7 @@ package io.swagger.api.impl;
 import io.swagger.api.*;
 import io.swagger.api.NotFoundException;
 import io.swagger.model.Feed;
+import io.swagger.model.InlineResponse2001;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,17 +20,17 @@ public class FeedsApiServiceImpl extends FeedsApiService {
     @Override
     public Response feedsDelete(Integer feedId, SecurityContext securityContext, String apiKey) throws NotFoundException, SQLException {
         FeedsController.unsubscribeFeed(feedId, apiKey);
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+        return Response.ok().build();
     }
     @Override
     public Response feedsFeedIdGet(Long feedId, SecurityContext securityContext, String apiKey) throws NotFoundException, SQLException {
         Feed feed = FeedsController.getFeed(feedId, apiKey);
-        return Response.ok(feed.toString()).build();
+        return Response.ok(feed).build();
     }
     @Override
     public Response feedsGet(SecurityContext securityContext, String apiKey) throws NotFoundException, IllegalArgumentException, SQLException, FeedException, IOException {
-    	List<Feed> feeds = FeedsController.getFeeds(apiKey);
-        return Response.ok(feeds.toString()).build();
+    	List<InlineResponse2001> feeds = FeedsController.getFeeds(apiKey);
+        return Response.ok(feeds).build();
     }
     @Override
     public Response feedsPost(String feedUrl, SecurityContext securityContext, String apiKey) throws IllegalArgumentException, SQLException, FeedException, IOException {
