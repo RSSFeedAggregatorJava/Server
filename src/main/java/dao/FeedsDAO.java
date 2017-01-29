@@ -21,7 +21,6 @@ public class FeedsDAO {
 		stt.setString(5, feed.getLink());
 		int rs = stt.executeUpdate();
 		stt.close();
-		//TODO: Gestion erreur
 	}
 
 	public static List<InlineResponse2001> readFeeds(int userId) throws SQLException {
