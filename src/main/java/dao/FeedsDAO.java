@@ -13,7 +13,7 @@ import utils.DBConnect;
 public class FeedsDAO {
 
 	public static void createFeed(Feed feed) throws SQLException {
-		PreparedStatement stt = DBConnect.conn.prepareStatement("INSERT INTO feeds SET user_id = ?, title = ?, url = ?, description = ?, link = ?");
+		PreparedStatement stt = DBConnect.conn.prepareStatement("INSERT IGNORE INTO feeds SET user_id = ?, title = ?, url = ?, description = ?, link = ?");
 		stt.setLong(1, feed.getUserId());
 		stt.setString(2, feed.getTitle());
 		stt.setString(3, feed.getFeedUrl());

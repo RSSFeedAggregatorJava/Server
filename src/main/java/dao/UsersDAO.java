@@ -13,7 +13,7 @@ import utils.DBConnect;
 public class UsersDAO {
 
 	public static InlineResponse200 createUser(Credentials credentials, String token) throws SQLException {
-		PreparedStatement stt = DBConnect.conn.prepareStatement("INSERT INTO users SET email = ?, password = ?, token = ?");
+		PreparedStatement stt = DBConnect.conn.prepareStatement("INSERT IGNORE INTO users SET email = ?, password = ?, token = ?");
 		stt.setString(1, credentials.getEmail());
 		stt.setString(2, BCrypt.hashpw(credentials.getPassword(), BCrypt.gensalt(12)));
 		stt.setString(3, token);
