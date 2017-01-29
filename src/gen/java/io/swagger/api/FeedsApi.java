@@ -41,9 +41,9 @@ public class FeedsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "feed doesn't exist", response = void.class) })
     public Response feedsDelete(@ApiParam(value = "feedId",required=true) Integer feedId
-,@Context SecurityContext securityContext,@HeaderParam("api_key") String apiKey)
+,@Context SecurityContext securityContext,@HeaderParam("api_key") String api_key)
     throws NotFoundException, SQLException {
-        return delegate.feedsDelete(feedId,securityContext,apiKey);
+        return delegate.feedsDelete(feedId,securityContext,api_key);
     }
     @GET
     @Path("/{feedId}")
@@ -59,9 +59,9 @@ public class FeedsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "feed not found", response = Feed.class) })
     public Response feedsFeedIdGet(@ApiParam(value = "feedId",required=true) @PathParam("feedId") Long feedId
-,@Context SecurityContext securityContext,@HeaderParam("api_key") String apiKey)
+,@Context SecurityContext securityContext,@HeaderParam("api_key") String api_key)
     throws NotFoundException, SQLException {
-        return delegate.feedsFeedIdGet(feedId,securityContext,apiKey);
+        return delegate.feedsFeedIdGet(feedId,securityContext,api_key);
     }
     @GET
     
@@ -74,9 +74,9 @@ public class FeedsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "the lisT of feedS subscribed by user", response = InlineResponse2001.class, responseContainer = "List"),
         
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid tag value", response = InlineResponse2001.class, responseContainer = "List") })
-    public Response feedsGet(@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
+    public Response feedsGet(@Context SecurityContext securityContext,@HeaderParam("api_key") String api_key)
     throws NotFoundException, IllegalArgumentException, SQLException, FeedException, IOException {
-        return delegate.feedsGet(securityContext,apiKey);
+        return delegate.feedsGet(securityContext,api_key);
     }
     @POST
     
@@ -90,9 +90,9 @@ public class FeedsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "url inaccessible", response = BigDecimal.class) })
     public Response feedsPost(@ApiParam(value = "feedUrl",required=true) String feedUrl
-,@Context SecurityContext securityContext,@HeaderParam("apiKey") String apiKey)
+,@Context SecurityContext securityContext,@HeaderParam("api_key") String api_key)
 		throws IllegalArgumentException, SQLException, FeedException, IOException
      {
-        return delegate.feedsPost(feedUrl,securityContext,apiKey);
+        return delegate.feedsPost(feedUrl,securityContext,api_key);
     }
 }

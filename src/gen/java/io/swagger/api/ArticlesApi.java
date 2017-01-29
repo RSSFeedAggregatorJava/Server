@@ -40,9 +40,9 @@ public class ArticlesApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid Order", response = Article.class) })
     public Response articlesFeedIdArticleIdGet(@ApiParam(value = "feedId",required=true) @PathParam("feedId") String feedId
 ,@ApiParam(value = "articleId",required=true) @PathParam("articleId") String articleId
-,@Context SecurityContext securityContext,@HeaderParam("api_key") String apiKey)
+,@Context SecurityContext securityContext,@HeaderParam("api_key") String api_key)
     throws NotFoundException, IllegalArgumentException, SQLException, FeedException, IOException {
-        return delegate.articlesFeedIdArticleIdGet(feedId,articleId,securityContext, apiKey);
+        return delegate.articlesFeedIdArticleIdGet(feedId,articleId,securityContext, api_key);
     }
     @GET
     @Path("/{feedId}")
@@ -56,8 +56,8 @@ public class ArticlesApi  {
         
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid Order", response = InlineResponse2001.class, responseContainer = "List") })
     public Response articlesFeedIdGet(@ApiParam(value = "feedId",required=true) @PathParam("feedId") String feedId
-,@Context SecurityContext securityContext,@HeaderParam("api_key") String apiKey)
+,@Context SecurityContext securityContext,@HeaderParam("api_key") String api_key)
     throws NotFoundException, IllegalArgumentException, SQLException, FeedException, IOException {
-        return delegate.articlesFeedIdGet(feedId,securityContext, apiKey);
+        return delegate.articlesFeedIdGet(feedId,securityContext, api_key);
     }
 }

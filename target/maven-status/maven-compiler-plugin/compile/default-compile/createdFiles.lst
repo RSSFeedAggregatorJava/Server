@@ -24,6 +24,7 @@ io\swagger\api\factories\FeedsApiServiceFactory.class
 io\swagger\api\JacksonJsonProvider.class
 io\swagger\model\User.class
 io\swagger\api\factories\UsersApiServiceFactory.class
+utils\Authentication.class
 io\swagger\api\NotFoundException.class
 dao\UsersDAO.class
 io\swagger\api\RFC3339DateFormat.class
