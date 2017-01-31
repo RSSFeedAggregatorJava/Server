@@ -34,7 +34,7 @@ public class FeedsApiServiceImpl extends FeedsApiService {
     }
     @Override
     public Response feedsPost(String feedUrl, SecurityContext securityContext, String apiKey) throws IllegalArgumentException, SQLException, FeedException, IOException {
-        //FeedsController.subscribeFeed(feedUrl, apiKey);
-        return Response.status(200).entity("key: " + apiKey).type("text/plain").build();
+        FeedsController.subscribeFeed(feedUrl, apiKey);
+        return Response.ok().build();
     }
 }

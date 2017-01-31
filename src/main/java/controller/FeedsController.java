@@ -23,14 +23,21 @@ public class FeedsController {
 		SyndFeed xml = parser.getFeed();
 
 		feed.setUserId(user.getUserId());
-		feed.setTitle(xml.getTitle());
+		if (xml.getTitle() != null)
+			feed.setTitle(xml.getTitle());
 		feed.setFeedUrl(feedUrl);
-		feed.setDescription(xml.getDescription());
-		feed.setLink(xml.getLink());
-		feed.setCopyright(xml.getCopyright());
-		feed.setImage(xml.getImage().getUrl());
-		feed.setLanguage(xml.getLanguage());
-		feed.setPubDate(xml.getPublishedDate().toString());
+		if (xml.getDescription() != null)
+			feed.setDescription(xml.getDescription());
+		if (xml.getLink() != null)
+			feed.setLink(xml.getLink());
+		if (xml.getCopyright() != null)
+			feed.setCopyright(xml.getCopyright());
+		if (xml.getImage() != null && xml.getImage().getUrl() != null)
+			feed.setImage(xml.getImage().getUrl());
+		if (xml.getLanguage() != null)
+			feed.setLanguage(xml.getLanguage());
+		if (xml.getPublishedDate() != null)
+			feed.setPubDate(xml.getPublishedDate().toString());
 		FeedsDAO.createFeed(feed);
 	}
 
