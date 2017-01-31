@@ -27,7 +27,7 @@ public class DBConnect implements ServletContextListener{
 		try {
 			Thread.sleep(2000);
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			conn = DriverManager.getConnection("jdbc:mysql://mysql:3306?autoReconnect=true", "root", "C5C4ng2ohfry03gG"); //C5C4ng2ohfry03gG
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306?autoReconnect=true", "root", "C5C4ng2ohfry03gG"); //C5C4ng2ohfry03gG
 			Statement stt = conn.createStatement();
 			stt.executeUpdate("CREATE DATABASE IF NOT EXISTS rssfeedagregator;");
 			stt.executeUpdate("USE rssfeedagregator;");
