@@ -27,8 +27,9 @@ public class FeedsDAO {
 		PreparedStatement stt = DBConnect.conn.prepareStatement("SELECT id, title FROM feeds WHERE user_id = ?");
 		stt.setInt(1, userId);
 		ResultSet rs = stt.executeQuery();
-		if (rs.isLast())
+		if (rs.next() == false)
 			return null;
+		rs.beforeFirst();
 		List<InlineResponse2001> feeds = new ArrayList<InlineResponse2001>();
 		while (rs.next()) {
 			InlineResponse2001 feed = new InlineResponse2001();
@@ -41,9 +42,9 @@ public class FeedsDAO {
 		return feeds;
 	}
 
-	public static void deleteFeed(Integer feedId) throws SQLException {
+	public static void deleteFeed(String feedId) throws SQLException {
 		PreparedStatement stt = DBConnect.conn.prepareStatement("DELETE FROM feeds WHERE id = ?");
-		stt.setLong(1, feedId);
+		stt.setString(1, feedId);
 		int rs = stt.executeUpdate();
 		stt.close();
 		//TODO: Gestion erreur
@@ -53,8 +54,9 @@ public class FeedsDAO {
 		PreparedStatement stt = DBConnect.conn.prepareStatement("SELECT * FROM feeds WHERE id = ?");
 		stt.setLong(1, feedId);
 		ResultSet rs = stt.executeQuery();
-		if (rs.isLast())
+		if (rs.next() == false)
 			return null;
+		rs.beforeFirst();
 
 		rs.next();
 		Feed feed = new Feed();

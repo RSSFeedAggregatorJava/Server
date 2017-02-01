@@ -40,7 +40,7 @@ public class FeedsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "successful unsubscribed", response = void.class),
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "feed doesn't exist", response = void.class) })
-    public Response feedsDelete(@ApiParam(value = "feedId",required=true) Integer feedId
+    public Response feedsDelete(@ApiParam(value = "feedId",required=true) String feedId
 ,@Context SecurityContext securityContext,@HeaderParam("api_key") String api_key)
     throws NotFoundException, SQLException {
         return delegate.feedsDelete(feedId,securityContext,api_key);

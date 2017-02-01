@@ -18,7 +18,7 @@ import controller.FeedsController;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-01-26T20:43:45.780Z")
 public class FeedsApiServiceImpl extends FeedsApiService {
     @Override
-    public Response feedsDelete(Integer feedId, SecurityContext securityContext, String apiKey) throws NotFoundException, SQLException {
+    public Response feedsDelete(String feedId, SecurityContext securityContext, String apiKey) throws NotFoundException, SQLException {
         FeedsController.unsubscribeFeed(feedId, apiKey);
         return Response.ok().build();
     }

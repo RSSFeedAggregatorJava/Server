@@ -34,6 +34,9 @@ public class UsersDAO {
 		PreparedStatement stt = DBConnect.conn.prepareStatement("SELECT * FROM users WHERE email = ?");
 		stt.setString(1, email);
 		ResultSet rs = stt.executeQuery();
+		if (rs.next() == false)
+			return null;
+		rs.beforeFirst();
 
 		User user = new User();
 		rs.next();
@@ -50,8 +53,9 @@ public class UsersDAO {
 		PreparedStatement stt = DBConnect.conn.prepareStatement("SELECT * FROM users WHERE token = ?");
 		stt.setString(1, apiKey);
 		ResultSet rs = stt.executeQuery();
-		if (rs.isLast())
+		if (rs.next() == false)
 			return null;
+		rs.beforeFirst();
 		User user = new User();
 		rs.next();
 		user.setUserId(rs.getInt("id"));

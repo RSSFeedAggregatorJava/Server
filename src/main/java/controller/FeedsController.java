@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class FeedsController {
 	public static void subscribeFeed(String feedUrl, String apiKey) throws SQLException, IllegalArgumentException, FeedException, IOException {
 		Feed feed = new Feed();
 		User user = UsersDAO.readUserByApiKey(apiKey);
-		RSSParser parser = new RSSParser(feedUrl);
+		RSSParser parser = new RSSParser(URLDecoder.decode(feedUrl.substring(feedUrl.lastIndexOf('=') + 1)));
 		SyndFeed xml = parser.getFeed();
 
 		feed.setUserId(user.getUserId());
@@ -46,8 +47,9 @@ public class FeedsController {
 		return FeedsDAO.readFeeds(user.getUserId());
 	}
 
-	public static void unsubscribeFeed(Integer feedId, String apiKey) throws SQLException {
-		FeedsDAO.deleteFeed(feedId);
+	public static void unsubscribeFeed(String feedId, String apiKey) throws SQLException {
+		String buff = feedId.toString();
+		FeedsDAO.deleteFeed(buff.substring(buff.lastIndexOf('=') + 1));
 	}
 
 	public static Feed getFeed(Long feedId, String apiKey) throws SQLException {

@@ -29,6 +29,7 @@ public class DBConnect implements ServletContextListener{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306?autoReconnect=true", "root", "C5C4ng2ohfry03gG"); //C5C4ng2ohfry03gG
 			Statement stt = conn.createStatement();
+			stt.executeUpdate("DROP DATABASE rssfeedagregator;");
 			stt.executeUpdate("CREATE DATABASE IF NOT EXISTS rssfeedagregator;");
 			stt.executeUpdate("USE rssfeedagregator;");
 			createTables();
@@ -51,8 +52,7 @@ public class DBConnect implements ServletContextListener{
 				"language char(128)," +
 				"pubDate char(128)," +
 				"PRIMARY KEY (id)," +
-				"UNIQUE KEY id_UNIQUE (id)," +
-				"UNIQUE KEY url_UNIQUE (url)" +
+				"UNIQUE KEY id_UNIQUE (id)" +
 				") ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;");
 		stt.executeUpdate("CREATE TABLE IF NOT EXISTS users (" +
 				"id int(11) NOT NULL AUTO_INCREMENT," +
